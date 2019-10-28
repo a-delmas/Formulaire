@@ -1,36 +1,33 @@
 $(document).ready(function () {
 
-    $("#btnconfirm").click(function () {
-
+    $("form").submit(function () {
         $("input").attr("minlength", "5")
         validation()
-
-    })
-    $('#formulaire').keyup(function () {
-        var password = $('#password');
-        var confirm = $('#password_confirm');
-        if (password.val() == confirm.val()) {
-            password.css('border', '3px solid green');
-            confirm.css('border', '3px solid green');
-        } else {
-            confirm.css('border', '3px solid red');
-        }
-        if ($("input").val() == ("input").html("")) {
+        if ($("input").val() === "") {
             alert("Rempli tout les champs")
-    
         }
-    });
+        else {
+            alert("Good!")
+        }
+        return false;
+    })
 
+    $("#btnreset").click(function () {
+        $("input").val("");
+    })
+
+    $('#password, #password_confirm').keyup(function () {
+        validation()
+    });
 })
 
 function validation() {
     var password = $('#password');
     var confirm = $('#password_confirm');
     if (password.val() == confirm.val()) {
-        console.log("succes");
-
+        password.css('border', '3px solid green');
+        confirm.css('border', '3px solid green');
     } else {
-        console.log("pas pareil");
-
+        confirm.css('border', '3px solid red');
     }
 }
